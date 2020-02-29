@@ -4,7 +4,7 @@
             <div class="title">
                 <img src="../../assets/logo_index.png" alt="">
             </div>
-            <el-form status-icon ref="myForm" :model="loginForm" :rules="loginRules" style="margin-top:20px">
+            <el-form style="margin-top:20px">
                 <!-- 手机号 -->
               <el-form-item >
                 <el-input v-model="input" placeholder="请输入手机号"></el-input>
@@ -12,8 +12,7 @@
               <!-- 验证码 -->
               <el-form-item>
               <el-input v-model="input" placeholder="请输入验证码" style="width:65%;"></el-input>
-              <!-- -------------行内块直接浮动 -->
-              <el-button style="float:right">发送验证码</el-button>
+              <el-button style="float:right" plain>发送验证码</el-button>
               </el-form-item>
               <!-- 隐私条款 -->
               <el-form-item>
