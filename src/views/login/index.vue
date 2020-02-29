@@ -20,7 +20,7 @@ export default {
 .back{
   // width: 100%;
   height: 100vh;
-  background-image: url('../../assets/back-03.jpg');
+  background-image: url('../../assets/back-01.jpg');
   background-size: cover;
   display: flex;
   justify-content: space-around;
