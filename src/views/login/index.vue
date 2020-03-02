@@ -1,5 +1,8 @@
 <template>
       <div class="login-bg">
+          <video class="v1"  autoplay muted loop src="../../assets/video.mp4">
+            <!-- <source src="../../assets/video.mp4"> -->
+          </video>
           <el-card class="login-card">
             <div class="title" style="user-select:none">
                 <img src="../../assets/cat01.png" alt="" style="height:60px">
@@ -25,7 +28,7 @@
               </el-form-item>
               <!-- 隐私条款 -->
               <el-form-item prop="checked">
-                <el-checkbox v-model="loginForm.checked">我已阅读并同意用户协议和隐私条款</el-checkbox>
+                <el-checkbox v-model="loginForm.checked"><span span style="color:snow">我已阅读并同意用户协议和隐私条款</span></el-checkbox>
               </el-form-item>
               <!-- 提交 -->
               <el-form-item>
@@ -101,26 +104,40 @@ export default {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+  overflow: hidden;
+  .v1{
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 140%;
+    z-index: 1;
+    // opacity: .9;
+  }
   &:before{//伪类实现模糊效果
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    background: url('../../assets/004.jpg') center;
+    background: url('../../assets/0013.gif') center;
     background-size: cover;
-    filter: blur(5px)
+    filter: blur(2px)
   }
   .login-card{
-    z-index: 2;
-    width: 490px;
+    z-index: 5;
+    width: 500px;
     height: 480px;
     margin: 0 auto;
-    padding-right:50px;
+    transform: translate(-30px);
+    padding: 0 20px;
     border: none;
+    border-radius: 50px;
     box-shadow: none;
     box-sizing: border-box;
+    // background: url('../../assets/0013.gif') center;
+    // background-size: cover;
     background-color: transparent;
-    // background-color: rgba(0, 0, 0, .8);
+    // background-color: rgba(0, 0, 0, .1);
     .title{
       height: 100px;
       text-align: center;
