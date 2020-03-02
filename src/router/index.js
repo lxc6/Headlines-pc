@@ -4,7 +4,7 @@ import Home from '@/views/Home'
 import Login from '@/views/login'
 
 Vue.use(VueRouter)
-
+// 一级路由
 const routes = [
   {
     path: '/',
