@@ -59,9 +59,9 @@ export default {
           pattern: /^\d{6}$/,
           message: '您的密码格式不正确'
         }],
-        code: [{ required: true, message: '您的手机号不能为空' }, {
+        code: [{ required: true, message: '您的验证码不能为空' }, {
           pattern: /^\d{6}$/,
-          message: '您的密码格式不正确'
+          message: '您的验证码格式不正确'
         }],
         checked: [{
           // validator自定义效验，required默认效验(无法验证布尔值)
