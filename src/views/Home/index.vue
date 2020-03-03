@@ -8,9 +8,11 @@
         </el-aside>
         <!-- 右 -->
         <el-container>
-          <el-header>
-            <h1>这里是顶栏容器</h1>
+          <!-- 顶 -->
+          <el-header  style="padding:0">
+            <nav-header></nav-header>
           </el-header>
+          <!-- 主 -->
           <el-main>
             <h1>这里是主要区域容器</h1>
             <!-- 二级路由 -->

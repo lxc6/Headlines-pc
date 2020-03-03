@@ -51,6 +51,7 @@ export default {
 .side{
   position: relative;
   height: 100vh;
+  // background: url('../../assets/006.jpg') 72%;
   background: url('../../assets/side.jpg') center;
   background-size: cover;
   &:before{
@@ -73,7 +74,7 @@ export default {
     position: relative;
     width: 100%;
     padding: 10px 0 30px 0;
-    background-color: rgba(0, 0, 0,.5);
+    background-color: rgba(0, 0, 0,.3);
     &:before{
       content: '';
       position: absolute;
