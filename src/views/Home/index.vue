@@ -1,10 +1,10 @@
 <template>
   <div class="home">
 
-      <el-container>
+      <el-container style="height:100vh;">
         <!-- 左 -->
-        <el-aside>
-          <h1>这里是侧边栏容器</h1>
+        <el-aside style="width:250px;overflow: hidden;">
+          <side-bar></side-bar>
         </el-aside>
         <!-- 右 -->
         <el-container>
@@ -26,6 +26,6 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="less" scoped>
 
 </style>
