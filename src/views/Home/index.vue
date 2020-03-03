@@ -14,8 +14,8 @@
           </el-header>
           <!-- 主 -->
           <el-main>
-            <h1>这里是主要区域容器</h1>
-            <!-- 二级路由 -->
+            <!-- 二级路由容器 -->
+            <router-view></router-view>
           </el-main>
         </el-container>
       </el-container>
@@ -29,5 +29,19 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+.el-header {
+    background-color: #fff;
+    color: #333;
+    line-height: 60px;
+  }
+  .el-aside {
+    color: #333;
+  }
+  .el-main{
+    position: relative;
+    overflow:hidden;
+    background: url('../../assets/main-01.jpg') center;
+    background-size: cover;
+    background-color:#222;
+  }
 </style>
