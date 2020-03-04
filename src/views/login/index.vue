@@ -16,8 +16,8 @@
                 </el-input>
               </el-form-item>
               <!-- 密码 -->
-              <el-form-item prop="password">
-                <el-input v-model="loginForm.password" type="password" placeholder="请输入密码">
+              <el-form-item prop="password" >
+                <el-input v-model="loginForm.password" type="password" placeholder="请输入密码" :disabled="true">
                   <template slot="prepend"><i class="el-icon-key"></i></template>
                 </el-input>
               </el-form-item>
@@ -55,10 +55,10 @@ export default {
           pattern: /^1[3-9]\d{9}$/,
           message: '您的手机号格式不正确'
         }],
-        password: [{ required: true, message: '您的密码不能为空' }, {
-          pattern: /^\d{6}$/,
-          message: '您的密码格式不正确'
-        }],
+        // password: [{ required: true, message: '您的密码不能为空' }, {
+        //   pattern: /^\d{6}$/,
+        //   message: '您的密码格式不正确'
+        // }],
         code: [{ required: true, message: '您的验证码不能为空' }, {
           pattern: /^\d{6}$/,
           message: '您的验证码格式不正确'
@@ -83,7 +83,8 @@ export default {
           method: 'post'
         }).then(res => {
           // 本地添加token
-          window.localStorage.setItem('user-token', res.data.data.token)
+          // window.localStorage.setItem('user-token', res.data.data.token)// 响应解构前
+          window.localStorage.setItem('user-token', res.data.token)// 响应解构后
           // 添加完毕跳转页面
           this.$router.push('/home')
         }).catch(() => {

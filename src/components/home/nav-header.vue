@@ -41,15 +41,16 @@ export default {
   },
   // 实例化完成就调用
   created () {
-    const token = localStorage.getItem('user-token')// 获取令牌
+    // const token = localStorage.getItem('user-token')// 获取令牌
     this.$axios({
       // method: 'get', 默认为get
-      url: '/user/profile', // 请求地址
-      headers: {
-        Authorization: `Bearer ${token}`// 将令牌放入请求头,固定格式Bearer + token
-      }
+      url: '/user/profile' // 请求地址
+      // headers: {
+      //   Authorization: `Bearer ${token}`// 将令牌放入请求头,固定格式Bearer + token
+      // }
     }).then(res => {
-      this.userMsg = res.data.data
+      // this.userMsg = res.data.data // 响应解构前
+      this.userMsg = res.data// 响应解构后
     })
   },
   methods: {
