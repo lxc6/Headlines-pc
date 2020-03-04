@@ -77,7 +77,6 @@ export default {
     login () {
       // 获取表单组件对象validate整体校验
       this.$refs.myForm.validate().then(() => {
-        // 异步操作
         this.$axios({
           url: '/authorizations',
           data: this.loginForm,
@@ -110,7 +109,7 @@ export default {
     left: 0;
     right: 0;
     margin: 0 auto;
-    width: 140%;
+    width: 2200px;
     z-index: 1;
     // opacity: .9;
   }
@@ -129,7 +128,7 @@ export default {
     height: 480px;
     margin: 0 auto;
     transform: translate(-30px);
-    padding: 0 20px;
+    padding: 0 30px;
     border: none;
     border-radius: 50px;
     box-shadow: none;
