@@ -4,8 +4,7 @@
         <img src="../../assets/cat01.png" alt="" style="height:80px;">
       </div>
       <!-- router开启路由模式 -->
-      <el-menu router background-color="rgba(225, 225, 225,.2)" text-color="#222"
-      style="border:none;">
+      <el-menu router background-color="rgba(225, 225, 225,.2)" text-color="#222" style="border:none;">
         <!-- 首页 -->
         <!-- index实现路由跳转 -->
         <el-menu-item index='/home'>

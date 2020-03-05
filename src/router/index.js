@@ -23,7 +23,7 @@ const routes = [
         component: Second
       },
       {
-        // path:'/home/comment',
+        // path: '/home/comment',
         path: 'comment',
         component: () => import('../views/comment')// 按需加载
       }
