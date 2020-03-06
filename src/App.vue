@@ -1,5 +1,5 @@
 <template>
-<!--根组件  删除所有只留一个容器 -->
+<!--根组件  删除所有只留一个容器 一级路由容器-->
     <router-view></router-view>
 </template>
 <style lang="less">

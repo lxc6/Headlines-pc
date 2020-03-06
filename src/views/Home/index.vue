@@ -3,7 +3,7 @@
 
       <el-container style="height:100vh;">
         <!-- 左 -->
-        <el-aside style="width:250px;overflow: hidden;">
+        <el-aside style="width:250px;overflow:hidden">
           <side-bar></side-bar>
         </el-aside>
         <!-- 右 -->

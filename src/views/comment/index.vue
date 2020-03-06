@@ -1,7 +1,7 @@
 <template>
 <!-- el-card -->
   <el-card style="height:100%;overflow:auto;">
-      <!-- 放置面包屑组件 slot="header"给card  -->
+      <!-- 放置面包屑组件    插槽header为一条分割线   -->
       <bread-crumb slot="header">
       <!-- 具名插槽 slot="title" 给bread-->
         <template slot="title">评论管理</template>
@@ -23,8 +23,15 @@
                size="small" type="text">{{obj.row.comment_status?'关闭':'打开'}}评论</el-button>
             </template>
           </el-table-column>
-
       </el-table>
+        <!-- 分页 -->
+          <el-row type="flex" style="height:80px" align="middle" justify="center">
+            <el-pagination
+              background
+              layout="prev, pager, next"
+              :total="1000">
+            </el-pagination>
+          </el-row>
   </el-card>
 </template>
 

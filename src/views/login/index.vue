@@ -44,10 +44,10 @@ export default {
   data () {
     return {
       loginForm: {
-        mobile: '',
+        mobile: '13911111111',
         password: '',
-        code: '',
-        checked: false
+        code: '246810',
+        checked: true
       },
       loginRules: {
         // 格式校验 required: true为必填项
