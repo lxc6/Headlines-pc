@@ -50,9 +50,6 @@ export default {
 .side{
   position: relative;
   height: 100vh;
-  // background: url('../../assets/006.jpg') 72%;
-  background: url('../../assets/side.jpg') center;
-  background-size: cover;
   &:before{
     content: '';
     position: absolute;

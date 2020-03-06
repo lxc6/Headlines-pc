@@ -30,7 +30,7 @@
               background
               layout="prev, pager, next"
               :current-page="page.currentPage"
-              :page-size="page.Pagesize"
+              :page-size="page.pageSize"
               :total="page.total"
               @current-change="changePage"
               ></el-pagination>
@@ -107,4 +107,10 @@ export default {
 </script>
 
 <style lang='less' scoped>
+.el-card{
+    background:url('../../assets/back.jpg') center;
+    background-size: cover;
+    // background: rgba(255, 255, 255, .4);
+    // background: rgba(0, 0, 0, .4);
+}
 </style>

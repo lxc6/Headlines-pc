@@ -3,7 +3,7 @@
 
       <el-container style="height:100vh;">
         <!-- 左 -->
-        <el-aside style="width:250px;overflow:hidden">
+        <el-aside style="width:250px;">
           <side-bar></side-bar>
         </el-aside>
         <!-- 右 -->
@@ -36,10 +36,11 @@ export default {
   }
   .el-aside {
     color: #333;
+    background: url('../../assets/side.jpg') center;
+    background-size: cover;
   }
   .el-main{
     position: relative;
-    overflow:hidden;
     background: url('../../assets/main-01.jpg') center;
     background-size: cover;
     background-color:#222;

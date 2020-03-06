@@ -52,7 +52,8 @@ export default {
     left: 0;
     right: 0;
     margin: 0 auto;
-    background-color: rgba(0, 0, 0, .2)
+    background-color: rgba(0, 0, 0, .2);
+    overflow: hidden;
   }
   @keyframes all {
       from {

@@ -25,7 +25,11 @@ const routes = [
       {
         // path: '/home/comment',
         path: 'comment',
-        component: () => import('../views/comment')// 按需加载
+        component: () => import('@/views/comment')// 按需加载
+      },
+      {
+        path: 'material',
+        component: () => import('@/views/material')
       }
     ]
   }, {
