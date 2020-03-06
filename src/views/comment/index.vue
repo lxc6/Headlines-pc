@@ -1,6 +1,6 @@
 <template>
-<!-- el-card -->
-  <el-card style="height:100%;overflow:auto;">
+<!-- el-card v-loading实现加载状态-->
+  <el-card v-loading="loading" style="height:100%;overflow:auto;">
       <!-- 放置面包屑组件    插槽header为一条分割线   -->
       <bread-crumb slot="header">
       <!-- 具名插槽 slot="title" 给bread-->
@@ -29,8 +29,11 @@
             <el-pagination
               background
               layout="prev, pager, next"
-              :total="1000">
-            </el-pagination>
+              :current-page="page.currentPage"
+              :page-size="page.Pagesize"
+              :total="page.total"
+              @current-change="changePage"
+              ></el-pagination>
           </el-row>
   </el-card>
 </template>
@@ -39,19 +42,30 @@
 export default {
   data () {
     return {
+      loading: false,
+      page: {
+        total: 0, // 总条数
+        currentPage: 1, // 当前页码
+        pageSize: 10// 每页多少条
+      },
       list: []
     }
   },
   methods: {
     getComment () {
+      this.loading = true// 请求显示之前打开遮罩
       this.$axios({
         url: '/articles',
         // 传参
         params: {
-          response_type: 'comment'// 看接口文档传入参数获取对应数据
+          response_type: 'comment', // 看接口文档传入参数获取对应数据
+          page: this.page.currentPage,
+          per_page: this.page.pageSize
         }
       }).then(res => {
         this.list = res.data.results
+        this.page.total = res.data.total_count
+        this.loading = false // 请求完成关闭遮罩
       })
     },
     // 格式化布尔值el-table不能显示布尔值
@@ -66,7 +80,8 @@ export default {
           method: 'put',
           url: '/comments/status',
           // query传参
-          params: { article_id: row.id }, // 文章id
+          // params: { article_id: row.id}, // 文章id
+          params: { article_id: row.id.toString() }, // 将数字类型转化为字符串解决大数字问题
           // body传参
           data: {
             allow_comment: !row.comment_status// 状态要与当前状态相反
@@ -79,6 +94,10 @@ export default {
           this.$message.error(`${msg}评论失败`)
         })
       })
+    },
+    changePage (newPage) {
+      this.page.currentPage = newPage
+      this.getComment()
     }
   },
   created () {
