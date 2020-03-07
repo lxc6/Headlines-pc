@@ -17,8 +17,8 @@
                     <div class="img-list">
                          <!-- 循环生成页面结构 -->
                         <el-card :body-style="{ padding: '0' }"
-                         class="img-card" v-for="item in list" :key="item.id">
-                            <img :src="item.url" alt="">
+                         class="img-card" v-for="(item,index) in list" :key="item.id">
+                            <img @click="changeDialog(index)" :src="item.url" alt="">
                             <el-row class="operate"
                             style="height:35px;border-radius:0 0 15px 15px;" type="flex"
                             justify="space-around" align="middle">
@@ -37,9 +37,9 @@
                           :body-style="{ padding: '5px' }"
                           style="height:150px"
                           class="img-card"
-                          v-for="item in list"
+                          v-for="(item,index) in list"
                           :key="item.id">
-                        <img :src="item.url" alt="" style="height:100%;border-radius:15px;">
+                        <img @click="changeDialog(index)" :src="item.url" alt="" style="height:100%;border-radius:15px;">
                         </el-card>
                     </div>
                 </el-tab-pane>
@@ -56,13 +56,24 @@
                     >
                 </el-pagination>
             </el-row>
-            <!-- 弹层走马灯 -->
+            <!-- 弹层 -->
+            <el-dialog :visible="dialogVisible" @close="dialogVisible = false" @opened="openEnd">
+              <!-- 走马灯 -->
+              <!-- indicator-position="outside" 指示器的位置上在内容外 -->
+              <el-carousel ref="myCarousel" height="450px" indicator-position="outside">
+                <el-carousel-item v-for="item in list" :key="item.id">
+                    <img style="width:100%;height:100%" :src="item.url" alt="">
+                </el-carousel-item>
+              </el-carousel>
+            </el-dialog>
         </el-card>
 </template>
 <script>
 export default {
   data () {
     return {
+      clickIndex: -1, // 定义点击索引
+      dialogVisible: false,
       loading: false,
       activeName: 'all',
       page: {
@@ -74,6 +85,15 @@ export default {
     }
   },
   methods: {
+    // 渲染完毕执行
+    openEnd () {
+      this.$refs.myCarousel.setActiveItem(this.clickIndex)// 手动切换图片当前索引
+    },
+    // 弹层
+    changeDialog (index) {
+      this.dialogVisible = true
+      this.clickIndex = index// 赋值当前索引
+    },
     // 获取并显示
     getMaterial () {
       this.loading = true
