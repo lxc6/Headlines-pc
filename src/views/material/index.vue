@@ -60,7 +60,7 @@
             <el-dialog :visible="dialogVisible" @close="dialogVisible = false" @opened="openEnd">
               <!-- 走马灯 -->
               <!-- indicator-position="outside" 指示器的位置上在内容外 -->
-              <el-carousel ref="myCarousel" height="450px" indicator-position="outside">
+              <el-carousel ref="myCarousel" height="450px" indicator-position="outside" :autoplay="false">
                 <el-carousel-item v-for="item in list" :key="item.id">
                     <img style="width:100%;height:100%" :src="item.url" alt="">
                 </el-carousel-item>

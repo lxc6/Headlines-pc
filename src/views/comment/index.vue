@@ -7,7 +7,7 @@
         <template slot="title">评论管理</template>
       </bread-crumb>
       <!-- 表格组件 -->
-      <el-table :data="list" style="">
+      <el-table :data="list" class="table">
         <!-- prop表示字段 label标示表头 -->
           <el-table-column width="650" prop="title" label="标题"></el-table-column>
           <!-- 给该列 formatter属性转换布尔值 -->
@@ -108,9 +108,7 @@ export default {
 
 <style lang='less' scoped>
 .el-card{
-    background:url('../../assets/back.jpg') center;
-    background-size: cover;
-    // background: rgba(255, 255, 255, .4);
+    background: rgba(255, 255, 255, .3);
     // background: rgba(0, 0, 0, .4);
 }
 </style>
