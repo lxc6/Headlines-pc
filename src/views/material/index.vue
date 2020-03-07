@@ -19,12 +19,11 @@
                         <el-card :body-style="{ padding: '0' }"
                          class="img-card" v-for="item in list" :key="item.id">
                             <img :src="item.url" alt="">
-                            <el-row
-                            style="height:25%;background:rgba(10, 50, 10, .1);margin-top: -4px;
-                            border-radius:0 0 15px 15px;" type="flex"
+                            <el-row class="operate"
+                            style="height:35px;border-radius:0 0 15px 15px;" type="flex"
                             justify="space-around" align="middle">
-                                <i class="el-icon-star-on"></i>
-                                <i class="el-icon-delete-solid"></i>
+                                <i @click="collectFile(item)" class="el-icon-star-on"></i>
+                                <i @click="delFile(item)" class="el-icon-delete-solid"></i>
                             </el-row>
                         </el-card>
                     </div>
@@ -110,7 +109,16 @@ export default {
       }).catch(() => {
         this.$message.error('上传素材失败')
       })
+    },
+    // 收藏
+    collectFile (row) {
+      this.$axios({}).then(() => {}).catch(() => {})
+    },
+    // 删除
+    delFile (row) {
+      this.$axios({}).then(() => {}).catch(() => {})
     }
+
   },
   created () {
     this.getMaterial()
@@ -129,10 +137,12 @@ export default {
                 border: none;
                 border-radius: 20px;
                 margin: 20px 30px;
+                background: rgba(0, 0, 0, .1);
                 box-sizing: border-box;
             img{
-                width: 100%;
-                height: 75%;
+                width: 200px;
+                height:135px;
+                cursor: pointer;
                 border-radius: 20px 20px 0 0;
                 }
             i{

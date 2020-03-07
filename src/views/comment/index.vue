@@ -81,7 +81,7 @@ export default {
           url: '/comments/status',
           // query传参
           // params: { article_id: row.id}, // 文章id
-          params: { article_id: row.id.toString() }, // 将数字类型转化为字符串解决大数字问题
+          params: { article_id: row.id.toString() }, // 将obj转化为字符串解决大数字问题
           // body传参
           data: {
             allow_comment: !row.comment_status// 状态要与当前状态相反
