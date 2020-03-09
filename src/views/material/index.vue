@@ -73,7 +73,7 @@ export default {
   data () {
     return {
       clickIndex: -1, // 定义点击索引
-      dialogVisible: false,
+      dialogVisible: false, // 弹窗关闭
       loading: false,
       activeName: 'all',
       page: {
@@ -91,7 +91,7 @@ export default {
     },
     // 弹层
     changeDialog (index) {
-      this.dialogVisible = true
+      this.dialogVisible = true// 弹窗开启
       this.clickIndex = index// 赋值当前索引
     },
     // 获取并显示

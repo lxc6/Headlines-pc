@@ -20,8 +20,8 @@
           <el-form-item label="频道列表: ">
              <!-- 统一用watch监听不用change  @change="connect"-->
               <el-select v-model="myForm.channel_id" placeholder="请选择频道">
+                  <el-option :value="null" label="全部频道"></el-option>
                   <el-option v-for="item in channels" :key="item.id" :value="item.id" :label="item.name">
-
                   </el-option>
               </el-select>
           </el-form-item>
@@ -61,7 +61,8 @@
           </el-col>
           <!-- 右 -->
           <el-col :span="12" style="text-align:right" class="right">
-              <span @click="editArticles(item.id.toString())"><i class="el-icon-edit"></i> 编辑</span>
+              <!-- 可以直接跟逻辑 不用加this 跳转时将文章id传入-->
+              <span @click="$router.push(`/home/publish/${item.id.toString()}`)"><i class="el-icon-edit"></i> 编辑</span>
               <span @click="delArticles(item.id.toString())"><i class="el-icon-delete"></i> 删除</span>
           </el-col>
       </el-row>

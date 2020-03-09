@@ -34,6 +34,10 @@ const routes = [
       {
         path: 'articles',
         component: () => import('@/views/articles')
+      },
+      {
+        path: 'publish/:articleId?', // 参数+ ? ---参数可有可无都能显示
+        component: () => import('@/views/publish')
       }
     ]
   }, {
