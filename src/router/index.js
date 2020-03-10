@@ -7,6 +7,11 @@ import Second from '@/views/Home/second-home.vue'
 Vue.use(VueRouter)
 // 一级路由
 const routes = [
+  // 所有没有组件的路由404
+  {
+    path: '*',
+    component: () => import('@/views/404')
+  },
   {
     path: '/',
     redirect: '/login'
@@ -38,6 +43,10 @@ const routes = [
       {
         path: 'publish/:articleId?', // 参数+ ? ---参数可有可无都能显示
         component: () => import('@/views/publish')
+      }, {
+        path: 'account',
+        component: () => import('@/views/account')
+
       }
     ]
   }, {

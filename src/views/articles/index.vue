@@ -43,10 +43,10 @@
       <el-row v-for="item in list" :key="item.id.toString()"
        class="row" type="flex" justify="space-between" align="middle" >
       <!-- 左 -->
-          <el-col :span="12">
+          <el-col :span="12" >
               <!-- 左左 -->
               <el-col :span="8">
-                  <img style="width:200px;height:120px"
+                  <img style="width:180px;height:120px;border-radius: 10px;"
                   :src="item.cover.images.length?item.cover.images[0]:defaultImg" alt="">
               </el-col>
               <!-- 左右 -->
@@ -219,6 +219,7 @@ export default {
         padding:10px;
         border-bottom:1px solid #ccc;
         .text{
+          padding-left: 10px;
             h3{
             padding: 10px 0;
             }

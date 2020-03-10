@@ -19,17 +19,15 @@
         <!-- 封面 -->
         <el-form-item label="封面:" prop="cover" style="margin-top:80px">
           <!-- 单选框 -->
-          <el-radio-group v-model="myForm.cover.type">
+          <!-- 类型发生变化触发changeType -->
+          <el-radio-group v-model="myForm.cover.type"  @change="changeType">
            <el-radio :label="1">单图</el-radio>
            <el-radio :label="3">三图</el-radio>
            <el-radio :label="0">无图</el-radio>
            <el-radio :label="-1">自动</el-radio>
           </el-radio-group>
           <!-- 上传图片 -->
-          <el-upload action="#" v-model="myForm.cover.images" list-type="picture-card" style="" multiple >
-              <!-- <span>点击图标选择图片</span> -->
-            <i class="el-icon-picture-outline"></i>
-          </el-upload>
+         <cover-image @coverImage="reveiceCover" :list="myForm.cover.images"></cover-image>
         </el-form-item>
          <!-- 频道 -->
         <el-form-item label="频道:" prop="channel_id">
@@ -80,7 +78,47 @@ export default {
 
     }
   },
+  // watch监听（只能监听data中的数据变化）捕捉路由的变化  $route也是data中的属性
+  watch: {
+    // 监听谁就写谁的名字
+    $route: function (to, from) {
+      // alert('123')
+      // to属性对象中的params中的articleId是否存在为判断依据
+      if (to.params.articleId) {
+        // 存在保留数据
+        this.getArticles(to.params.articleId)
+      } else {
+        // 不存在清空数据 默认值
+        this.myForm = {
+          title: '',
+          content: '',
+          cover: {
+            type: 0,
+            images: []
+          },
+          channel_id: null
+        }
+      }
+    }
+  },
   methods: {
+    // 获取cover子组件传递的数据
+    reveiceCover (url, index) {
+      // url 只是一个地址 iamges个数不确定 无法判断要存入那个 需要index
+      // this.myForm.cover.images = url
+      // 删除当前索引位置默认图片替换为新url
+      this.myForm.cover.images.splice(index, 1, url)
+    },
+    // 改变类型
+    changeType () {
+      if (this.myForm.cover.type === 1) {
+        this.myForm.cover.images = ['']
+      } else if (this.myForm.cover.type === 3) {
+        this.myForm.cover.images = ['', '', '']
+      } else {
+        this.myForm.cover.images = []
+      }
+    },
     // 获取文章
     getArticles (id) {
       this.$axios({
