@@ -1,5 +1,5 @@
 <template>
-  <el-card>
+  <el-card class="card">
       <!-- 面包屑 -->
       <bread-crumb slot="header">
       <template slot="title">发布文章</template>
@@ -165,5 +165,7 @@ export default {
 </script>
 
 <style lang='less' scoped>
-
+  .card{
+    background-color: rgba(255, 255, 255,.4);
+  }
 </style>

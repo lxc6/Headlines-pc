@@ -34,7 +34,7 @@
                 <el-tab-pane label="收藏素材" name="collect">
                     <div class="img-list">
                         <el-card
-                          :body-style="{ padding: '5px' }"
+                          :body-style="{ padding: '0' }"
                           style="height:150px"
                           class="img-card"
                           v-for="(item,index) in list"
