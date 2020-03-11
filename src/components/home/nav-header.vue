@@ -2,7 +2,8 @@
   <div class="nav">
       <el-row type="flex" align="middle" style="height:60px;padding:0 20px">
         <el-col :span="12">
-            <i class='el-icon-s-fold' style=""></i>
+          <!--  :class="{名称:布尔值,名称:布尔值,.....}" 执行为true时的类名-->
+            <i @click="collapse=!collapse" :class="{'el-icon-s-fold':!collapse,'el-icon-s-unfold':collapse}" style=""></i>
             <span>
                 江苏传智播客教育科技股份有限公司
             </span>
@@ -37,7 +38,13 @@ import eventBus from '@/utils/eventBus'
 export default {
   data () {
     return {
-      userMsg: {}
+      userMsg: {},
+      collapse: false// 开始时不是折叠
+    }
+  },
+  watch: {
+    collapse: function () {
+      eventBus.$emit('Collapse')// 触发公共事件
     }
   },
   methods: {
@@ -96,7 +103,8 @@ export default {
         border-radius: 50%;
         margin: 0 10px;
     }
-    .el-icon-s-fold{
+    .el-icon-s-fold,
+    .el-icon-s-unfold{
       // 公司图标对齐
       font-size:22px;
       transform:translate(0,2px)

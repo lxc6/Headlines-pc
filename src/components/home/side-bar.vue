@@ -1,10 +1,11 @@
 <template>
   <div class="side">
       <div class="title">
-        <img src="../../assets/cat01.png" alt="" style="height:80px;">
+        <img :src="fold?'':coverImg" alt="" style="height:80px;">
       </div>
-      <!-- router开启路由模式 -->
-      <el-menu router background-color="rgba(225, 225, 225,.2)" text-color="#222" style="border:none;">
+      <!-- router开启路由模式  :collapse="collapse"-->
+      <el-menu :collapse="fold" router background-color="rgba(225, 225, 225,.2)"
+      text-color="#222" style="border:none;">
         <!-- 首页 -->
         <!-- index实现路由跳转 -->
         <el-menu-item index='/home'>
@@ -41,8 +42,29 @@
 </template>
 
 <script>
+// import eventBus from '@/utils/eventBus'
 export default {
-
+  data () {
+    return {
+      coverImg: require('../../assets/cat01.png') // 转换变量
+      // smallImg: require('../../assets/toutiao.png')
+    }
+  },
+  // 父传子 接收父组件传过来的变量
+  props: ['fold']
+  // props: ['collapse']
+  // data () {
+  //   return {
+  //     collapse: false
+  //   }
+  // },
+  // created () {
+  //   // 监听公共事件
+  //   eventBus.$on('Collapse', () => {
+  //     // 数据对应
+  //     this.collapse = !this.collapse
+  //   })
+  // }
 }
 </script>
 
@@ -60,7 +82,7 @@ export default {
   i{
     color: #222;
     font-size: 25px;
-    padding:0 10px;
+    // padding:0 10px;
   }
   span {
   font-size: 18px;
@@ -69,7 +91,10 @@ export default {
   .title{
     position: relative;
     width: 100%;
-    padding: 10px 0 30px 0;
+    height: 100px;
+    padding: 10px 0 20px 0;
+    // background: url('../../assets/cat01.png') center 10px no-repeat;
+    // background-size: contain;
     background-color: rgba(0, 0, 0,.3);
     &:before{
       content: '';
