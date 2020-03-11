@@ -28,7 +28,6 @@
         </el-form>
          <!-- 头像 -->
           <div class="port">
-
              <el-upload action=""
                :show-file-list="false"
                :http-request="userImage">
@@ -43,6 +42,7 @@
 </template>
 
 <script>
+import eventBus from '@/utils/eventBus'// 引入公共事件池
 export default {
   data () {
     return {
@@ -81,6 +81,8 @@ export default {
       }).then(res => {
         this.myForm.photo = res.data.photo
         this.$message.success('修改成功')
+        // 触发事件
+        eventBus.$emit('uploadUser')
       }).catch(() => {
         this.$message.error('修改失败')
       })
@@ -94,8 +96,9 @@ export default {
           url: '/user/profile',
           data: this.myForm
         }).then(() => {
-          this.getAccount()
           this.$message.success('修改成功')
+          // 触发公共事件 广播
+          eventBus.$emit('uploadUser')
         }).catch(() => {
           this.$message.error('修改失败')
         })

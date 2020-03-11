@@ -33,25 +33,12 @@
 </template>
 
 <script>
+import eventBus from '@/utils/eventBus'
 export default {
   data () {
     return {
       userMsg: {}
     }
-  },
-  // 实例化完成就调用
-  created () {
-    // const token = localStorage.getItem('user-token')// 获取令牌
-    this.$axios({
-      // method: 'get', 默认为get
-      url: '/user/profile' // 请求地址
-      // headers: {
-      //   Authorization: `Bearer ${token}`// 将令牌放入请求头,固定格式Bearer + token
-      // }
-    }).then(res => {
-      // this.userMsg = res.data.data // 响应解构前
-      this.userMsg = res.data// 响应解构后
-    })
   },
   methods: {
     clickM (command) { // elementui提供command事件
@@ -64,7 +51,24 @@ export default {
         window.localStorage.removeItem('user-token')
         this.$router.push('/login')
       }
+    },
+    // 获取用户信息
+    getuserInfo () {
+      this.$axios({
+        url: '/user/profile' // 请求地址
+      }).then(res => {
+      // this.userMsg = res.data.data // 响应解构前
+        this.userMsg = res.data// 响应解构后
+      })
     }
+  },
+  // 实例化完成就调用
+  created () {
+    this.getuserInfo()
+    // 初始化完成就 监听 uploadUser事件改变 传入后面回调
+    eventBus.$on('uploadUser', () => {
+      this.getuserInfo()
+    })
   }
 }
 </script>
