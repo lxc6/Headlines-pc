@@ -82,6 +82,8 @@
 </template>
 
 <script>
+// 调用封装的接口
+import { getArticles, delArticles, getChannels } from '@/api/articles'
 export default {
   data () {
     return {
@@ -160,38 +162,30 @@ export default {
       this.getArticles(params)
     },
     // 获取频道数据
-    getChannels () {
-      this.$axios({
-        url: '/channels'
-      }).then(res => {
-        this.channels = res.data.channels
-      })
+    // async+await处理
+    async getChannels () {
+      const res = await getChannels()
+      this.channels = res.data.channels
     },
     // 获取文章列表数据
-    getArticles (params) {
-      this.$axios({
-        url: '/articles',
-        params// 根据传不传参来实现筛选显示
-      }).then(res => {
-        this.count = res.data.total_count// 文章总数
-        this.page.total = res.data.total_count
-        this.list = res.data.results
-      })
+    async getArticles (params) {
+      const res = await getArticles(params)
+      this.count = res.data.total_count// 文章总数
+      this.page.total = res.data.total_count
+      this.list = res.data.results
     },
-    delArticles (id) {
-      this.$confirm('你确定要删除该文章吗？', '提示').then(() => {
-        this.$axios({
-          method: 'delete',
-          url: `/articles/${id}`
-        }).then(() => {
-          // this.getArticles() 筛选条件会被刷新
-          // 应该带着条件和页码去加载
-          this.connect()
-          this.$message.success('删除成功')
-        }).catch(() => {
-          this.$message.error('删除失败')
-        })
-      })
+    // 删除
+    async delArticles (id) {
+      await this.$confirm('你确定要删除该文章吗？', '提示')
+      try {
+        await delArticles(id)
+        // this.getArticles() 筛选条件会被刷新
+        // 应该带着条件和页码去加载
+        this.connect()
+        this.$message.success('删除成功')
+      } catch (error) {
+        this.$message.error('删除失败')
+      }
     },
     editArticles (id) {}
 
