@@ -1,3 +1,4 @@
+// 专门处理请求，导出若干方法
 import request from '@/utils/request'
 // 封装接口get
 export function getArticles (params) {
